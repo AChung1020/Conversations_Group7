@@ -98,5 +98,5 @@ class Player7(Player):
 		said = len(self.contributed_items)
 		progress = min(1, said / (max(1, len(self.memory_bank))))  # 0->1
 		S = len(self.preferences)
-		K = int(S * (0.50 + 0.30 * progress)) - 1  # 50% -> 80% as bank shrinks
+		K = int(S * (0.30 + 0.40 * progress)) - 1  # 50% -> 80% as bank shrinks
 		return max(0, min(S - 1, K))
