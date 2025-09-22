@@ -10,10 +10,11 @@ class Player7(Player):
 			self.contributed_items.append(history[-1])
 
 		# if its first turn or previous was a pause
-		if len(history) == 0 or history[-1] is None:
+		if len(history) ==0 or history[-1] is None:
 			return self.pause(history)
 		else:
 			return self.play(history)
+		
 
 	def pause(self, history: list[Item]) -> Item | None:
 		rejected: list[Item] = list()
@@ -49,8 +50,8 @@ class Player7(Player):
 		remaining = [it for it in self.memory_bank if it not in history]
 		K = self.dynamic_threshold(history)
 		eligible = [it for it in remaining if self.most_preferred(it) <= K]
-		if not eligible:  # safety valve
-			eligible = remaining
+		if not eligible:  
+			return None
 		chosen_item = None
 		importance = float('-inf')
 		highest_pref_index = float('inf')
